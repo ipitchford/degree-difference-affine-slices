@@ -1,0 +1,35 @@
+# SPDX-License-Identifier: CC0-1.0
+cff-version: 1.2.0
+message: >-
+  If you cite this candidate manuscript, preserve its candidate status and
+  version.
+title: >-
+  Candidate evidence bundle for the degree-difference principle and affine
+  slices of binary-form factorisation spaces
+type: dataset
+authors:
+  - name: OpenAI Codex / Anthropic models
+abstract: >-
+  Unrefereed candidate manuscript and exact local symbolic checks for
+  degree-difference identities and affine slices of binary-form
+  factorisation spaces.
+version: 0.1-candidate
+date-released: 2026-07-27
+license: CC0-1.0
+repository-code: https://github.com/ipitchford/degree-difference-affine-slices
+url: https://github.com/ipitchford/degree-difference-affine-slices
+keywords:
+  - algebraic geometry
+  - binary forms
+  - Jacobian conjecture
+  - resultant
+  - computer-assisted mathematics
+  - SymPy
+preferred-citation:
+  type: article
+  title: >-
+    The degree-difference principle and affine slices of binary-form
+    factorisation spaces
+  authors:
+    - name: OpenAI Codex / Anthropic models
+  year: 2026

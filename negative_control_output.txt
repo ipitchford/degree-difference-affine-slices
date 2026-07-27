@@ -1,0 +1,2 @@
+Fail-closed control passed (normal mode): false det DF expectation was rejected.
+Fail-closed control passed (optimized mode): false det DF expectation was rejected.

@@ -1,0 +1,83 @@
+{
+  "schema_version": "1.0",
+  "license": "CC0-1.0",
+  "generated_utc": "2026-07-27T21:29:28Z",
+  "status": "local_replay_only",
+  "source_archive": {
+    "name": "degree_difference_affine_slices_final_source.zip",
+    "sha256": "d2827a5793330d57cf7800b41925e0999a69f5bf498842512fed90dcda869620",
+    "zip_crc_passed": true,
+    "path_safety_passed": true,
+    "supplied_receipt_hashes_matched": true
+  },
+  "platform": {
+    "operating_system": "macOS 26.5.2",
+    "build": "25F84",
+    "architecture": "arm64"
+  },
+  "tools": {
+    "python": "3.13.5",
+    "sympy": "1.14.0",
+    "mpmath": "1.3.0",
+    "tectonic": "0.16.9",
+    "qpdf": "12.3.2",
+    "cff_schema": "1.2.0"
+  },
+  "commands": [
+    {
+      "description": "ordinary and optimized symbolic replay plus negative controls",
+      "command": "make PYTHON=<isolated-venv>/bin/python verify",
+      "exit_status": 0
+    },
+    {
+      "description": "candidate PDF build",
+      "command": "make TECTONIC=<tectonic-0.16.9> pdf-tectonic",
+      "exit_status": 0
+    },
+    {
+      "description": "PDF structural check",
+      "command": "qpdf --check paper.pdf",
+      "exit_status": 0
+    },
+    {
+      "description": "citation metadata validation",
+      "command": "cffconvert --validate --infile CITATION.cff",
+      "exit_status": 0
+    }
+  ],
+  "results": {
+    "ordinary_checker_matches_transcript": true,
+    "optimized_checker_matches_transcript": true,
+    "ordinary_negative_control_rejected_false_expectation": true,
+    "optimized_negative_control_rejected_false_expectation": true,
+    "full_determinant_identity_checked_for_positive_total_degree_at_most": 4,
+    "base_point_sign_checked_for_each_degree_from_1_through": 8,
+    "pdf_pages": 15,
+    "pdf_page_size": "US Letter",
+    "pdf_fonts_embedded": true,
+    "pdf_qpdf_check_passed": true,
+    "citation_metadata_valid": true
+  },
+  "sha256": {
+    "paper.pdf": "f642d2c0f499ee49e45c522f6c3259dd6aaa28e2e477df632d03a716c157f5d5",
+    "paper.tex": "3342a85b6b6d5378948b70aa97a675643255e53dbc13dfe68bc6495a8d6b1930",
+    "verify_degree_difference_affine_slices.py": "7b1890e9fc212272a180b1fefd5d2644ce10724f73691ab8978585fc37560ac5",
+    "test_fail_closed.py": "c0c1807f103a0f085c18b6786d66169f03748b3eeee3f0356cc174c18b34aa92",
+    "verifier_output.txt": "c81eab141ee6ad2ea0cbf32a35554fe69f48c83f06cc448550db57403d9e68e1",
+    "negative_control_output.txt": "8cce4ff76f5d3a4d0f9770aa0cd0ecf9dd170c63db72ca85b8e33e220ce5f405",
+    "requirements.txt": "5c538a2903754af889db079cdd91e9319ae4a9ab0701173e54ff351183ec76c6"
+  },
+  "external_source_fingerprints": {
+    "ulam_ai_jacobian_pdf": "fcc91582150fa5ed7914bce443080c926771378b8e9bea7b9c2b866ddc6419b2",
+    "nasqret_sympy_verification_ipynb": "be772263ae2f11397741d48418fe2ecf77076eca35ecb4fff7f53375608d4788"
+  },
+  "assurance_exclusions": [
+    "independent external reproduction",
+    "external human review of the complete manuscript",
+    "peer review",
+    "end-to-end formalisation",
+    "exhaustive novelty or priority determination",
+    "symbolic verification of the general geometric arguments",
+    "byte-for-byte PDF reproducibility across TeX environments"
+  ]
+}

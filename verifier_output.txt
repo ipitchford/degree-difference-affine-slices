@@ -1,0 +1,8 @@
+All exact checks passed:
+  - parametrisation and defining equations
+  - polynomial inverse and intermediate identities
+  - components and Jacobian of G
+  - linear conjugacy to F, det DF, and collision
+  - discriminant coordinate conversion and triple-root curve
+  - full determinant identity for positive r+s <= 4
+  - general determinant sign for 1 <= r,s <= 8

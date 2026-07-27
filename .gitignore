@@ -1,0 +1,12 @@
+# SPDX-License-Identifier: CC0-1.0
+
+.DS_Store
+.venv/
+__pycache__/
+build/
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.synctex.gz

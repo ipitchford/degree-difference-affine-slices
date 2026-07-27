@@ -1,0 +1,1339 @@
+% SPDX-License-Identifier: CC0-1.0
+\documentclass[11pt,reqno]{amsart}
+
+\usepackage[T1]{fontenc}
+\IfFileExists{lmodern.sty}{\usepackage{lmodern}}{}
+\IfFileExists{microtype.sty}{\usepackage{microtype}}{}
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{xurl}
+\usepackage[colorlinks=true,linkcolor=blue!45!black,citecolor=blue!45!black,urlcolor=blue!45!black,
+  pdftitle={The degree-difference principle and affine slices of binary-form factorisation spaces},
+  pdfauthor={OpenAI Codex / Anthropic models},
+  pdfsubject={Unrefereed candidate manuscript on binary-form factorisation spaces and the three-dimensional Keller counterexample},
+  pdfkeywords={Jacobian conjecture, Keller map, binary forms, resultant, twisted cubic, affine space, finite etale torsor}]{hyperref}
+\usepackage{aliascnt}
+\usepackage[nameinlink,capitalise,noabbrev]{cleveref}
+
+\setlength{\textwidth}{6.15in}
+\setlength{\textheight}{9.0in}
+\setlength{\oddsidemargin}{0.18in}
+\setlength{\evensidemargin}{0.18in}
+\setlength{\topmargin}{-0.15in}
+\setlength{\parskip}{2pt}
+
+\newtheorem{theorem}{Theorem}[section]
+
+\newaliascnt{proposition}{theorem}
+\newtheorem{proposition}[proposition]{Proposition}
+\aliascntresetthe{proposition}
+
+\newaliascnt{corollary}{theorem}
+\newtheorem{corollary}[corollary]{Corollary}
+\aliascntresetthe{corollary}
+
+\newaliascnt{lemma}{theorem}
+\newtheorem{lemma}[lemma]{Lemma}
+\aliascntresetthe{lemma}
+
+\theoremstyle{definition}
+\newaliascnt{definition}{theorem}
+\newtheorem{definition}[definition]{Definition}
+\aliascntresetthe{definition}
+
+\newaliascnt{question}{theorem}
+\newtheorem{question}[question]{Question}
+\aliascntresetthe{question}
+
+\theoremstyle{remark}
+\newaliascnt{remark}{theorem}
+\newtheorem{remark}[remark]{Remark}
+\aliascntresetthe{remark}
+
+\crefname{theorem}{Theorem}{Theorems}
+\crefname{proposition}{Proposition}{Propositions}
+\crefname{corollary}{Corollary}{Corollaries}
+\crefname{lemma}{Lemma}{Lemmas}
+\crefname{definition}{Definition}{Definitions}
+\crefname{question}{Question}{Questions}
+\crefname{remark}{Remark}{Remarks}
+
+\newcommand{\A}{\mathbb A}
+\newcommand{\Pj}{\mathbb P}
+\newcommand{\Gm}{\mathbb G_m}
+\newcommand{\C}{\mathbb C}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\OO}{\mathcal O}
+\newcommand{\cR}{\mathcal R}
+\newcommand{\cS}{\mathcal S}
+\newcommand{\cH}{\mathscr H}
+\newcommand{\Res}{\operatorname{Res}}
+\newcommand{\Disc}{\operatorname{Disc}}
+\newcommand{\Cl}{\operatorname{Cl}}
+\newcommand{\Pic}{\operatorname{Pic}}
+\newcommand{\Sym}{\operatorname{Sym}}
+\newcommand{\Spec}{\operatorname{Spec}}
+\newcommand{\im}{\operatorname{im}}
+\newcommand{\Span}{\operatorname{Span}}
+\newcommand{\rank}{\operatorname{rank}}
+\newcommand{\id}{\operatorname{id}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\LL}{\mathbb L}
+\newcommand{\KVar}{K_0(\operatorname{Var}_{\C})}
+\newcommand{\abs}[1]{\lvert #1\rvert}
+\newcommand{\set}[1]{\left\{#1\right\}}
+
+\title[Affine slices of binary-form factorisation spaces]
+{The degree-difference principle and affine slices\\
+of binary-form factorisation spaces}
+
+\author{OpenAI Codex / Anthropic models}
+\thanks{Repository maintainer and publisher: Ian Pitchford. Research
+direction and mediation: Ian Pitchford. The model names are provenance
+labels and do not imply provider endorsement or corporate authorship.
+No external human review of the complete manuscript is documented.}
+\date{27 July 2026}
+
+\subjclass[2020]{Primary 14R15; Secondary 14E20, 14L30, 14N05}
+\keywords{Jacobian conjecture, Keller map, binary forms, resultant, twisted cubic, affine space, Grothendieck ring, finite étale torsor}
+
+\begin{document}
+
+\begin{abstract}
+Let $W$ be a two-dimensional complex vector space and write
+$V_d=\Sym^d(W^\vee)$.  For positive integers $r,s$, consider the
+multiplication--resultant map
+\[
+ \Phi_{r,s}:V_r\times V_s\longrightarrow V_{r+s}\times\A^1,
+ \qquad (A,B)\longmapsto\bigl(AB,\Res(A,B)\bigr).
+\]
+We prove the determinant identity
+\[
+ \det D\Phi_{r,s}
+ =(-1)^{s(r+1)}(r-s)\Res(A,B)^2
+\]
+and derive a degree-difference principle: when $r\ne s$, the resultant
+recovers the unique infinitesimal scaling direction forgotten by
+multiplication; the normalized factorisation space is a finite étale
+$\mu_{\abs{s-r}}$-torsor over the complement of the resultant and
+hyperplane divisors in $\Pj(V_r)\times\Pj(V_s)$; its generic
+degree is $\abs{s-r}\binom{r+s}{r}$; and, when the two boundary divisors
+are prime, the complement has divisor class group
+$\Z/\abs{s-r}\Z$.
+
+We then classify all normalized linear--quadratic slices.  For
+$0\ne\ell\in V_3^\vee$, set
+\[
+ X_\ell=\set{(L,Q)\in V_1\times V_2:
+ \Res(L,Q)=1,\ \ell(LQ)=1}.
+\]
+Let $\Gamma\subset\Pj(V_3)$ be the twisted cubic and
+$\cH_\ell=\Pj(\ker\ell)$.  We prove
+\[
+ X_\ell\simeq\A^3
+ \quad\Longleftrightarrow\quad
+ \cH_\ell\text{ is tangent but nonosculating to }\Gamma.
+\]
+More precisely, the three contact types $(1,1,1)$, $(2,1)$ and $(3)$
+give Grothendieck classes $\LL^3-\LL$, $\LL^3$ and
+$\LL^3-\LL^2$, respectively; in the osculating case
+$X_\ell\simeq\Gm\times\A^2$.  The successful tangent slice is an
+iterated affine-line bundle and yields the marked-simple-root model of
+the three-dimensional Keller counterexample.  Finally, the torsor
+argument shows that no untrimmed normalized linear--times--degree-$(d-1)$
+slice can be $\A^d$ for $d\ge4$.
+\end{abstract}
+
+\maketitle
+
+\begin{center}
+\fcolorbox{black!65}{black!3}{%
+\parbox{0.92\textwidth}{\small
+\textbf{Status: unrefereed candidate mathematical manuscript.}
+The accompanying SymPy program checks selected explicit polynomial
+identities, not the general geometric proofs.  No independent external
+reproduction or external human review of the complete manuscript,
+literature-based novelty determination, peer review, or end-to-end
+formalisation is documented.  Issues, counterexamples and independent
+checks are invited.
+
+\medskip
+Except where otherwise indicated, to the extent Ian Pitchford holds
+copyright and related rights in the original repository contents, those
+rights are dedicated under CC0 1.0 Universal.  Cited and quoted
+third-party material, external sources, software dependencies, trademarks
+and embedded fonts retain their own terms.}}
+\end{center}
+
+\section{Introduction}
+
+The recently announced three-dimensional counterexample to the Jacobian
+conjecture admits a geometric reformulation in terms of multiplication of
+a binary linear form and a binary quadratic form.  The construction
+separates three issues that look accidental in expanded coordinates:
+multiplication forgets a relative scaling; the resultant restores that
+missing local coordinate; and one particular affine hyperplane slice of
+the product space is itself affine three-space.
+
+The public record contains several distinct contributions.  Alpöge's
+announcement credited Fable for the explicit counterexample
+\cite{AlpogeAnnouncement}.  In the discussion hosted by Speyer, Will
+Sawin posted a ChatGPT-produced symmetric-product formulation prompted
+by Andy Jiang; Tao's account derived the explicit polynomial coordinates
+\cite{SpeyerThread,TaoDigestion}.  Sawin later developed an iterated
+$\A^1$-bundle explanation through further ChatGPT discussion, and Daniel
+Litt supplied a related bundle argument.  Levinson gave a
+projective-geometric conic account of the tangent construction
+\cite{SpeyerThread,LevinsonGeometry}.  Speyer also identified the vector
+bundle sequence
+\[
+ 0\longrightarrow\OO_{\Pj^1}(-2)
+ \longrightarrow\OO_{\Pj^1}^{\oplus3}
+ \longrightarrow\OO_{\Pj^1}(1)^{\oplus2}
+ \longrightarrow0,
+\]
+which explains the trivial projective-line bundle hidden in the
+construction \cite{SpeyerThread}.  In the same discussion, a commenter
+using the name Skooi recorded the $d-2$ class-group obstruction and a
+marked-simple-root interpretation, while Shubhodip Mondal noted the
+broader $\abs{r-s}$ pattern for two binary factors.  Tao's discussion
+isolated three $\operatorname{PGL}_2$-orbits of hyperplanes and observed
+that the affine phenomenon occurs in the double-root orbit; a subsequent
+comment posed the converse classification explicitly
+\cite{SpeyerThread,TaoDigestion}.
+
+This paper gives a self-contained answer.  Its first result is broader
+than the cubic problem.
+
+\begin{theorem}[Degree-difference principle]\label{thm:degree-difference-intro}
+Let $r,s\ge1$ and choose the standard monomial coefficient orders on
+$V_r,V_s,V_{r+s}$.  Then
+\[
+ \det D\Phi_{r,s}
+ =(-1)^{s(r+1)}(r-s)\Res(A,B)^2.
+\]
+In particular, if $r\ne s$, the map $\Phi_{r,s}$ is étale on the coprime
+locus $\{\Res\ne0\}$.
+
+For $0\ne\ell\in V_{r+s}^\vee$, put
+\begin{align*}
+ \widetilde X_{r,s,\ell}
+ &=\set{(A,B):\Res(A,B)=1,\ \ell(AB)=1},\\
+ U_{r,s,\ell}
+ &=\bigl(\Pj(V_r)\times\Pj(V_s)\bigr)
+   \setminus(\cR_{r,s}\cup\cS_{r,s,\ell}),
+\end{align*}
+where $\cR_{r,s}$ is the resultant divisor and
+$\cS_{r,s,\ell}=\{\ell(AB)=0\}$.  If $r\ne s$, projectivisation is a
+finite étale $\mu_{\abs{s-r}}$-torsor
+\[
+ \widetilde X_{r,s,\ell}\longrightarrow U_{r,s,\ell}.
+\]
+The induced multiplication map has generic degree
+\[
+ \abs{s-r}\binom{r+s}{r}.
+\]
+If $\cR_{r,s}$ and $\cS_{r,s,\ell}$ are prime, then
+\[
+ \Cl(U_{r,s,\ell})\simeq\Z/\abs{s-r}\Z.
+\]
+\end{theorem}
+
+The same integer $s-r$ therefore controls the Jacobian determinant, the
+normalisation ambiguity, the generic covering degree and the divisor
+class group.  The cubic construction is the first adjacent-degree case:
+$(r,s)=(1,2)$, so the degree difference equals one and all four
+obstructions disappear simultaneously.
+
+Our central classification is the following.
+
+\begin{theorem}[Complete cubic classification]\label{thm:classification-intro}
+Let $0\ne\ell\in V_3^\vee$, let
+\[
+ \Gamma=\set{[M^3]:[M]\in\Pj(V_1)}\subset\Pj(V_3)
+\]
+be the twisted cubic, and put $\cH_\ell=\Pj(\ker\ell)$.  Over $\C$,
+\[
+ \boxed{
+ X_\ell\simeq\A^3
+ \quad\Longleftrightarrow\quad
+ \cH_\ell\text{ is tangent but not osculating to }\Gamma.}
+\]
+More precisely,
+\begin{center}
+\begin{tabular}{@{}lll@{}}
+\toprule
+$\cH_\ell\cap\Gamma$ & geometry of $X_\ell$ & $[X_\ell]\in\KVar$\\
+\midrule
+three distinct points $(1,1,1)$ & $X_\ell\not\simeq\A^3$ & $\LL^3-\LL$\\
+tangent, nonosculating $(2,1)$ & $X_\ell\simeq\A^3$ & $\LL^3$\\
+osculating $(3)$ & $X_\ell\simeq\Gm\times\A^2$ & $\LL^3-\LL^2$\\
+\bottomrule
+\end{tabular}
+\end{center}
+Equivalently, in the dual projective space, the successful functionals
+form the discriminant surface of binary cubics with the triple-root curve
+removed.
+\end{theorem}
+
+The tangent case gives a polynomial étale map $\A^3\to\A^3$ whose fibre
+over a cubic is the set of its simple roots.  Its generic degree is three,
+so it is not injective.  In suitable coordinates it is exactly the
+announced Keller map; an explicit conjugacy and an exact verification are
+recorded in \cref{app:coordinates,app:verification}.
+
+The degree-difference theorem also closes the most immediate
+higher-degree extension.
+
+\begin{corollary}[Uniqueness of the untrimmed linear-factor slice]
+\label{cor:unique-degree-intro}
+For $d\ge4$ and every nonzero $\ell\in V_d^\vee$,
+\[
+ \set{(L,B)\in V_1\times V_{d-1}:
+ \Res(L,B)=1,\ \ell(LB)=1}
+ \not\simeq\A^d.
+\]
+Thus $d=3$ is the unique degree at least three in which the untrimmed
+linear--times--degree-$(d-1)$ normalisation can be affine space.
+\end{corollary}
+
+The proof uses compactly supported Euler characteristic rather than only
+the class group.  The normalized slice is a finite étale cover of degree
+$d-2$ of the boundary complement $U_{1,d-1,\ell}$; if it were $\A^d$, then
+$1=(d-2)\chi_c(U)$, impossible for $d\ge4$.
+
+\section{The multiplication--resultant map}
+
+Let $W$ be a two-dimensional complex vector space and
+$V_d=\Sym^d(W^\vee)$.  Fix coordinates $X,Y$ on $W$ and order the
+monomial basis of $V_d$ as
+\[
+ X^d,X^{d-1}Y,\ldots,Y^d.
+\]
+For $A\in V_r$ and $B\in V_s$, write $R(A,B)=\Res(A,B)$.
+We use the Sylvester convention in which the matrix has the $s$ shifted
+coefficient rows of $A$ followed by the $r$ shifted coefficient rows of
+$B$.  Thus $\Res(X^r,Y^s)=1$.
+
+\subsection{The lost tangent direction}
+
+\begin{lemma}\label{lem:kernel-multiplication}
+If $R(A,B)\ne0$, then the kernel of the differential of multiplication
+$m(A,B)=AB$ is
+\[
+ \ker dm_{(A,B)}=\C(A,-B).
+\]
+\end{lemma}
+
+\begin{proof}
+Suppose $\dot A B+A\dot B=0$.  Since $A$ and $B$ are coprime, $A$ divides
+$\dot A B$ and hence divides $\dot A$.  Both are degree-$r$ binary forms,
+so $\dot A=tA$ for some $t\in\C$.  Substitution gives
+$\dot B=-tB$.  The converse is immediate.
+\end{proof}
+
+The kernel is the infinitesimal relative-scaling direction
+$(A,B)\mapsto(\lambda A,\lambda^{-1}B)$.  The resultant has bidegree
+$(s,r)$:
+\[
+ R(\lambda A,\mu B)=\lambda^s\mu^r R(A,B).
+\]
+Consequently
+\begin{equation}\label{eq:res-directional}
+ dR_{(A,B)}(A,-B)=(s-r)R(A,B).
+\end{equation}
+This already proves étaleness on the coprime locus when $r\ne s$.
+
+\subsection{The determinant identity}
+
+\begin{theorem}\label{thm:determinant}
+With the coefficient orders fixed above and the target ordered as the
+coefficients of $AB$ followed by the resultant,
+\[
+ \boxed{
+ \det D\Phi_{r,s}
+ =(-1)^{s(r+1)}(r-s)R(A,B)^2.}
+\]
+For $r=s$, both sides vanish identically.
+\end{theorem}
+
+\begin{proof}
+Assume first that $r\ne s$.  By \cref{lem:kernel-multiplication} and
+\eqref{eq:res-directional}, the determinant is nonzero whenever
+$R(A,B)\ne0$.  The resultant hypersurface is irreducible: it is the image
+of the irreducible incidence variety of pairs of forms with a marked
+common root.  Hence every irreducible factor of $\det D\Phi_{r,s}$ is a
+scalar multiple of $R$.
+
+Under $(A,B)\mapsto(\lambda A,\mu B)$, the Jacobian determinant has
+bidegree $(2s,2r)$.  Indeed, the $r+s+1$ coefficients of $AB$ each have
+weight $\lambda\mu$, the resultant has weight $\lambda^s\mu^r$, and the
+source volume form has weight $\lambda^{r+1}\mu^{s+1}$.  Since $R$ has
+bidegree $(s,r)$, there is a constant $c_{r,s}$ such that
+\[
+ \det D\Phi_{r,s}=c_{r,s}R^2.
+\]
+
+Evaluate at $A=X^r$ and $B=Y^s$, where $R(A,B)=1$.  Write tangent
+coefficients as
+\[
+ \dot A=\sum_{i=0}^r a_iX^{r-i}Y^i,
+ \qquad
+ \dot B=\sum_{j=0}^s b_jX^{s-j}Y^j.
+\]
+The product differential sends $b_j$ to the coefficient of
+$X^{r+s-j}Y^j$ and $a_i$ to the coefficient of
+$X^{r-i}Y^{s+i}$.  The only overlap is the middle coefficient, which is
+$a_0+b_s$.  The resultant differential is $sa_0+rb_s$.  Delete the two overlapping columns $a_0,b_s$ and the corresponding
+product row.  The remaining product rows form a permutation matrix.  Moving the
+columns into block order has $s(r+1)+r$ inversions, while moving the
+resultant row next to the overlap row contributes $r$ further inversions.
+Its total sign is therefore $(-1)^{s(r+1)}$.  On
+the deleted coordinates and the product/resultant rows, the remaining
+block is
+\[
+ \begin{pmatrix}1&1\\ s&r\end{pmatrix},
+\]
+whose determinant is $r-s$.  Their product gives the displayed sign.
+
+If $r=s$, \eqref{eq:res-directional} shows that the relative-scaling
+vector remains in the kernel of $D\Phi_{r,r}$ wherever $R\ne0$, so the
+determinant vanishes identically.  The formula then remains valid.
+\end{proof}
+
+\begin{remark}\label{rem:characteristic}
+The determinant identity is integral.  Over a field of characteristic
+$p$, the same proof shows that $\Phi_{r,s}$ is étale on the coprime locus
+exactly when $p\nmid(s-r)$.  We work over $\C$ below because the orbit and
+Hodge-theoretic arguments are cleanest there.
+\end{remark}
+
+\subsection{Projective normalisation and the cyclic torsor}
+
+Let
+\[
+ Y_{r,s}=\Pj(V_r)\times\Pj(V_s).
+\]
+The resultant defines a prime divisor $\cR_{r,s}$ of class $(s,r)$, and
+$\ell(AB)$ defines a divisor $\cS_{r,s,\ell}$ of class $(1,1)$.
+
+\begin{proposition}\label{prop:torsor}
+Let $n=\abs{s-r}>0$.  Projectivisation induces a finite étale
+$\mu_n$-torsor
+\[
+ q:\widetilde X_{r,s,\ell}\longrightarrow U_{r,s,\ell}.
+\]
+The action is
+\[
+ \zeta\cdot(A,B)=(\zeta A,\zeta^{-1}B),
+ \qquad \zeta^n=1.
+\]
+\end{proposition}
+
+\begin{proof}
+Take $([A],[B])\in U_{r,s,\ell}$ and representatives with
+\[
+ R_0=R(A,B)\ne0,
+ \qquad h_0=\ell(AB)\ne0.
+\]
+We seek scalars $\lambda,\mu$ for which
+\[
+ \lambda^s\mu^rR_0=1,
+ \qquad \lambda\mu h_0=1.
+\]
+The second equation gives $\mu=(\lambda h_0)^{-1}$.  If $s>r$, the
+first becomes
+\begin{equation}\label{eq:kummer-local}
+ \lambda^{s-r}=\frac{h_0^r}{R_0}.
+\end{equation}
+If $r>s$, the equivalent equation is
+$\lambda^{r-s}=R_0/h_0^r$.  Thus every projective point has exactly $n$
+normalized lifts, permuted simply transitively by $\mu_n$.
+
+On a product of standard affine charts of $Y_{r,s}$, choose regular
+representatives of the two tautological lines.  The corresponding equation
+is locally a Kummer cover $t^n=u$ with $u$ invertible.  Over $\C$ this
+is finite étale.  The local equations arise from the global
+projectivisation map and therefore agree on overlaps; étaleness is
+local on the source.  The global $\mu_n$-action is simply transitive on
+geometric fibres, so these local Kummer descriptions give the stated
+torsor.
+\end{proof}
+
+\begin{proposition}[Generic degree]\label{prop:generic-degree}
+Assume $r\ne s$.  The multiplication map
+\[
+ \widetilde X_{r,s,\ell}\longrightarrow
+ \set{C\in V_{r+s}:\ell(C)=1}
+\]
+has generic degree
+\[
+ \boxed{\abs{s-r}\binom{r+s}{r}.}
+\]
+\end{proposition}
+
+\begin{proof}
+A general binary form $C$ of degree $r+s$ has distinct roots.  Choosing a
+degree-$r$ factor projectively is equivalent to choosing $r$ of those
+roots, giving $\binom{r+s}{r}$ projective factorizations.  For each one,
+\cref{prop:torsor} gives $\abs{s-r}$ normalized lifts.
+\end{proof}
+
+\subsection{Divisor classes and units}
+
+\begin{proposition}\label{prop:class-group}
+Suppose $r\ne s$ and $\cS_{r,s,\ell}$ is prime.  Then
+\[
+ \OO(U_{r,s,\ell})^\times=\C^\times,
+ \qquad
+ \Cl(U_{r,s,\ell})\simeq\Z/\abs{s-r}\Z.
+\]
+If $\cS_{r,s,\ell}$ is reducible, then
+$\OO(U_{r,s,\ell})^\times/\C^\times$ is nonzero.
+\end{proposition}
+
+\begin{proof}
+For a smooth projective variety and the complement of prime divisors,
+the divisor localisation sequence gives
+\[
+ 0\longrightarrow
+ \OO(U)^\times/\C^\times
+ \longrightarrow
+ \bigoplus_i\Z[D_i]
+ \longrightarrow
+ \Pic(Y_{r,s})
+ \longrightarrow
+ \Cl(U)
+ \longrightarrow0.
+\]
+If the boundary has the two prime components $\cR_{r,s}$ and
+$\cS_{r,s,\ell}$, the class map is represented by
+\[
+ \begin{pmatrix}s&1\\ r&1\end{pmatrix}.
+\]
+Its determinant is $s-r$, and its Smith normal form is
+$\operatorname{diag}(1,\abs{s-r})$.  The map is injective, so units are
+constant and the cokernel is $\Z/\abs{s-r}\Z$.
+
+If $\cS_{r,s,\ell}$ is reducible, the boundary contains at least three
+prime divisors, while $\Pic(Y_{r,s})$ has rank two.  The class map has a
+nonzero kernel, which produces a nonconstant unit.
+\end{proof}
+
+\begin{corollary}\label{cor:euler-obstruction}
+If $\abs{s-r}>1$, then
+\[
+ \widetilde X_{r,s,\ell}\not\simeq\A^{r+s}.
+\]
+\end{corollary}
+
+\begin{proof}
+After analytification, a finite étale morphism of degree $n$ is an
+$n$-sheeted topological covering.  Additivity over a finite
+constructible stratification by finite CW complexes therefore gives
+$\chi_c(X)=n\chi_c(Y)$.  Applying this to \cref{prop:torsor} yields
+\[
+ \chi_c(\widetilde X_{r,s,\ell})
+ =\abs{s-r}\,\chi_c(U_{r,s,\ell}).
+\]
+If the source were $\A^{r+s}$, the left-hand side would equal one, which
+is not divisible by $\abs{s-r}>1$ in $\Z$.
+\end{proof}
+
+Taking $(r,s)=(1,d-1)$ proves \cref{cor:unique-degree-intro}.  Notice
+that this argument does not require either boundary divisor to be prime.
+
+\section{The cubic compactification and marked roots}
+
+We now specialize to $(r,s)=(1,2)$.  Write
+\[
+ X_\ell=\widetilde X_{1,2,\ell},
+ \qquad
+ \overline X=\Pj(V_1)\times\Pj(V_2)\simeq\Pj^1\times\Pj^2.
+\]
+Since $s-r=1$, \cref{prop:torsor} has one sheet.
+
+\begin{proposition}\label{prop:projective-complement}
+Projectivisation is an isomorphism
+\[
+ X_\ell\xrightarrow{\sim}
+ \overline X\setminus(\cR\cup\cS_\ell).
+\]
+For representatives with
+$R_0=\Res(L,Q)\ne0$ and $h_0=\ell(LQ)\ne0$, the inverse normalization is
+\[
+ L'=\frac{h_0}{R_0}L,
+ \qquad
+ Q'=\frac{R_0}{h_0^2}Q.
+\]
+\end{proposition}
+
+\begin{proof}
+The displayed scalings satisfy
+$\Res(L',Q')=1$ and $\ell(L'Q')=1$, and they are unchanged if the original
+representatives are rescaled independently.  They therefore define the
+inverse to projectivisation.
+\end{proof}
+
+Identify $\Pj(V_d)$ with $\Sym^d(\Pj^1)$.  A point $[L]\in\Pj(V_1)$ is a
+root $p\in\Pj^1$, while $[Q]\in\Pj(V_2)$ is an unordered degree-two
+divisor $D$.  The resultant divisor is the incidence locus
+\[
+ \cR=\set{(p,D):p\in D}.
+\]
+The multiplication map
+\[
+ \pi:\Pj(V_1)\times\Pj(V_2)\longrightarrow\Pj(V_3),
+ \qquad ([L],[Q])\longmapsto[LQ]
+\]
+marks one root of a cubic divisor.
+
+\begin{proposition}[Marked-simple-root model]\label{prop:marked-root}
+There is a natural isomorphism
+\[
+ X_\ell\simeq
+ \set{(C,p):\ell(C)=1,\ p\text{ is a simple root of }C}.
+\]
+Under this isomorphism, the map
+$f_\ell:X_\ell\to H_\ell=\{\ell(C)=1\}$ forgets the marked root.  Hence
+\[
+ \#f_\ell^{-1}(C)=
+ \begin{cases}
+ 3,&C\text{ has three distinct roots},\\
+ 1,&C\text{ has one double and one simple root},\\
+ 0,&C\text{ is a cube}.
+ \end{cases}
+\]
+Moreover, $f_\ell$ is étale.
+\end{proposition}
+
+\begin{proof}
+The complement of $\cR$ consists exactly of factorizations $C=LQ$ in
+which the root of $L$ is not a root of $Q$, hence is a simple root of
+$C$.  The condition $\ell(C)\ne0$ removes $\cS_\ell$, and
+\cref{prop:projective-complement} imposes the unique affine
+normalisation.  The fibre count follows immediately.  Étaleness follows
+from \cref{thm:determinant} by base change along
+$H_\ell\to V_3\times\A^1$, $C\mapsto(C,1)$.
+\end{proof}
+
+\section{Hyperplane contact and the boundary divisors}
+
+Let
+\[
+ \Gamma=\set{[M^3]:[M]\in\Pj(V_1)}\subset\Pj(V_3)
+\]
+be the twisted cubic and $\cH_\ell=\Pj(\ker\ell)$.  The restriction of a
+hyperplane to $\Gamma\simeq\Pj^1$ has degree three.  Over $\C$, the
+intersection divisor has one of the three types
+\[
+ (1,1,1),\qquad(2,1),\qquad(3).
+\]
+These are respectively the transverse, tangent nonosculating and
+osculating orbits.
+
+For $p=[L]\in\Pj(V_1)$, denote the fibres of the two boundary divisors by
+\[
+ \cR_p=\set{[Q]:\Res(L,Q)=0},
+ \qquad
+ (\cS_\ell)_p=\set{[Q]:\ell(LQ)=0}.
+\]
+The first is always a line in $\Pj(V_2)$.
+
+\begin{lemma}[The missing bundle criterion]\label{lem:S-bundle}
+Define
+\[
+ \alpha_p:V_2\longrightarrow\C,
+ \qquad Q\longmapsto\ell(LQ).
+\]
+Then $\alpha_p=0$ if and only if $\cH_\ell$ is the osculating plane to
+$\Gamma$ at $[L^3]$.  Consequently, if $\cH_\ell$ is not osculating,
+$\cS_\ell\to\Pj^1$ is a $\Pj^1$-bundle.
+\end{lemma}
+
+\begin{proof}
+The functional $\alpha_p$ vanishes exactly when $\ell$ annihilates the
+three-dimensional subspace $LV_2\subset V_3$, equivalently when
+\[
+ \cH_\ell=\Pj(LV_2).
+\]
+Choose a complementary linear form $M$.  Expanding
+\[
+ (L+tM)^3=L^3+3tL^2M+3t^2LM^2+t^3M^3
+\]
+shows that the osculating plane at $[L^3]$ is
+\[
+ \Pj\Span\{L^3,L^2M,LM^2\}=\Pj(LV_2).
+\]
+If no $\alpha_p$ vanishes, their kernels form a rank-two subbundle of the
+trivial bundle $V_2\otimes\OO_{\Pj^1}$, whose projectivisation is
+$\cS_\ell$.
+\end{proof}
+
+\begin{lemma}\label{lem:tangent-lines}
+One has $\cR_p\subseteq(\cS_\ell)_p$ if and only if $\cH_\ell$
+contains the tangent line to $\Gamma$ at $[L^3]$.  If
+$\alpha_p\ne0$, so that both fibres are lines, this is equivalent to
+$\cR_p=(\cS_\ell)_p$.
+\end{lemma}
+
+\begin{proof}
+A quadratic form in $\cR_p$ is $Q=LM$ for some $M\in V_1$.  Its product
+with $L$ is $L^2M$.  As $M$ varies, the projective line
+$\Pj(L^2V_1)$ is the tangent line to $\Gamma$ at $[L^3]$.  Thus
+$\cR_p\subseteq(\cS_\ell)_p$ exactly when that tangent line lies in
+$\cH_\ell$.  If $\alpha_p\ne0$, both fibres are lines, and containment
+is equality.
+\end{proof}
+
+Rescaling $\ell$ does not change the isomorphism type of $X_\ell$: for
+$t\in\C^\times$, the map $(L,Q)\mapsto(tL,t^{-2}Q)$ identifies
+$X_\ell$ with $X_{t\ell}$.  The $\operatorname{SL}_2$-action on binary
+forms acts equivariantly on the family.  Hence it suffices to study one
+representative of each contact type.
+
+\section{Motivic separation of the three orbits}
+
+Let $\LL=[\A^1]\in\KVar$.  Since
+\[
+ [\overline X]=[\Pj^1][\Pj^2]
+ =1+2\LL+2\LL^2+\LL^3,
+\]
+and $\cR\to\Pj^1$ is a $\Pj^1$-bundle,
+\[
+ [\cR]=(1+\LL)^2=1+2\LL+\LL^2.
+\]
+By \cref{lem:S-bundle}, the same is true for $\cS_\ell$ in the
+transverse and tangent nonosculating cases.
+
+\begin{proposition}\label{prop:motivic-classes}
+The three contact types have classes
+\[
+ [X_\ell]=
+ \begin{cases}
+ \LL^3-\LL,&(1,1,1),\\
+ \LL^3,&(2,1),\\
+ \LL^3-\LL^2,&(3).
+ \end{cases}
+\]
+\end{proposition}
+
+\begin{proof}
+In the transverse case, \cref{lem:tangent-lines} shows that the two fibre
+lines are distinct for every $p$.  Their intersection is therefore a
+section of $\overline X\to\Pj^1$, so
+$[\cR\cap\cS_\ell]=1+\LL$.  Inclusion--exclusion gives
+\[
+ [X_\ell]
+ =[\overline X]-[\cR]-[\cS_\ell]+[\cR\cap\cS_\ell]
+ =\LL^3-\LL.
+\]
+
+In the tangent nonosculating case, the two lines coincide in the unique
+fibre over the tangency point $p_0$ and are distinct elsewhere.  To make
+the resulting degeneration explicit, use the tangent normal form
+\[
+ L=aX+bY,\qquad Q=cX^2+dXY+eY^2,\qquad \ell(LQ)=ad+bc.
+\]
+Then $\cR\cap\cS_\ell$ is cut out by
+\[
+ ad+bc=0,\qquad a^2e-abd+b^2c=0.
+\]
+Set-theoretically it is the union of
+\[
+ \{a=c=0\}
+ \quad\text{and}\quad
+ \{ad+bc=0,\ ae-2bd=0\}.
+\]
+The first component is the vertical $\Pj^1$ over $p_0=[0:1]$; the
+second is the closure of the residual section.  They meet only at
+$([a:b],[c:d:e])=([0:1],[0:0:1])$.  Hence
+\[
+ [\cR\cap\cS_\ell]
+ =2[\Pj^1]-[\operatorname{pt}]
+ =1+2\LL,
+\]
+and inclusion--exclusion gives $[X_\ell]=\LL^3$.
+
+The osculating case is computed explicitly in
+\cref{prop:osculating}; there $X_\ell\simeq\Gm\times\A^2$, so its class is
+$(\LL-1)\LL^2=\LL^3-\LL^2$.
+\end{proof}
+
+\begin{corollary}\label{cor:transverse-not-affine}
+In the transverse case, $X_\ell\not\simeq\A^3$.
+\end{corollary}
+
+\begin{proof}
+Apply the compactly supported Hodge--Deligne polynomial
+$E_c:\KVar\to\Z[u,v]$.  One obtains
+\[
+ E_c(X_\ell;u,v)=(uv)^3-uv,
+ \qquad
+ E_c(\A^3;u,v)=(uv)^3.
+\]
+\end{proof}
+
+The motivic equality $[X_\ell]=\LL^3$ in the tangent case does not by
+itself imply $X_\ell\simeq\A^3$.  We now prove the isomorphism.
+
+\section{The tangent nonosculating slice}\label{sec:tangent}
+
+Choose an affine coordinate on $\Pj^1$ in which the tangent hyperplane is
+the plane of depressed cubics.  For finite roots $p,q,r$, its equation is
+\[
+ p+q+r=0.
+\]
+Write $\Sym^2(\Pj^1)\simeq\Pj^2$.  For $p\in\Pj^1$, let
+\[
+ L_p=\set{D:p\in D},
+ \qquad
+ H_p=\set{D:p+D\in\cH_\ell}.
+\]
+For finite $p$, the two lines meet at
+\[
+ s(p)=\{p,-2p\}.
+\]
+At $p=\infty$ they coincide.  The map
+\[
+ s:\Pj^1\longrightarrow\Sym^2(\Pj^1),
+ \qquad p\longmapsto\{p,-2p\},
+\]
+has image a nonsingular conic $C_\varphi$.  Write
+$\varphi(p)=-2p$ on the affine chart.
+
+Define
+\[
+ X^*=\set{(p,\Lambda):s(p)\in\Lambda,
+ \ \Lambda\ne L_p,H_p},
+\]
+where $\Lambda$ is a line in $\Pj^2$.
+
+\begin{proposition}\label{prop:first-A1-bundle}
+Projection from the moving point $s(p)$ defines a Zariski-locally trivial
+$\A^1$-bundle
+\[
+ X_\ell\longrightarrow X^*.
+\]
+\end{proposition}
+
+\begin{proof}
+A point of $X_\ell$ is a pair $(p,D)$ with
+$D\notin L_p\cup H_p$.  Since $s(p)=L_p\cap H_p$, one has $D\ne s(p)$,
+so the line $\Lambda=\overline{s(p)D}$ is well-defined and avoids the two
+forbidden lines.  Conversely, for fixed $(p,\Lambda)\in X^*$, the point
+$D$ may be any point of $\Lambda\setminus\{s(p)\}\simeq\A^1$.
+Globally this is the universal $\Pj^1$-bundle of points on $\Lambda$ with
+the section $D=s(p)$ removed.
+\end{proof}
+
+Every line through $s(p)$ meets the conic $C_\varphi$ at a second point,
+counted with multiplicity.  Write that point as $s(q)$.
+
+\begin{proposition}\label{prop:second-A1-bundle}
+The second-intersection map
+\[
+ \rho:X^*\longrightarrow C_\varphi\setminus\{s(\infty)\}
+ \simeq\A^1,
+ \qquad (p,\Lambda)\longmapsto s(q),
+\]
+is a Zariski-locally trivial $\A^1$-bundle.
+\end{proposition}
+
+\begin{proof}
+The forbidden line $H_p$ is the chord joining $s(p)$ to $s(\infty)$, so
+$\Lambda\ne H_p$ is exactly the condition $q\ne\infty$.  For fixed
+$q\in\A^1$, the point $p$ determines the secant--tangent line through
+$s(p)$ and $s(q)$.  This line equals $L_p$ for exactly one value,
+$p=\varphi(q)=-2q$.  Hence
+\[
+ \rho^{-1}(s(q))\simeq\Pj^1\setminus\{\varphi(q)\}\simeq\A^1.
+\]
+The secant construction extends regularly across $p=q$ by taking the
+tangent line to the conic.  At $q=0$, that tangent line is $L_0$; the
+exceptional value is still the single point $p=\varphi(0)=0$.  Thus no
+extra fibre degeneration occurs.  Equivalently,
+$X^*$ is the complement of the graph of $\varphi$ in the trivial
+$\Pj^1$-bundle $\Pj^1\times\A^1$, and is therefore an $\A^1$-bundle.
+\end{proof}
+
+\begin{lemma}\label{lem:A1-trivial}
+Every Zariski-locally trivial $\A^1$-bundle over $\A^n$ is trivial.
+\end{lemma}
+
+\begin{proof}
+Its transition maps have the form $t\mapsto a_{ij}t+b_{ij}$.  The
+$a_{ij}$ define a line bundle, which is trivial because
+$\Pic(\A^n)=0$.  After choosing a trivialisation, the $b_{ij}$ define a
+torsor under $\OO_{\A^n}$, which is trivial because
+$H^1(\A^n,\OO)=0$.
+\end{proof}
+
+\begin{theorem}\label{thm:tangent-A3}
+If $\cH_\ell$ is tangent but nonosculating to $\Gamma$, then
+$X_\ell\simeq\A^3$.
+\end{theorem}
+
+\begin{proof}
+By \cref{prop:second-A1-bundle,lem:A1-trivial}, one has
+$X^*\simeq\A^2$.  Applying \cref{prop:first-A1-bundle,lem:A1-trivial}
+then gives $X_\ell\simeq\A^3$.
+\end{proof}
+
+\begin{remark}[The hidden vector bundle]\label{rem:hidden-bundle}
+The moving point $s(p)$ is a conic in $\Pj(V_2)$.  Its tautological line
+subbundle in $V_2\otimes\OO_{\Pj^1}$ is $\OO(-2)$, and projection from
+$s(p)$ is governed by
+\[
+ 0\longrightarrow\OO(-2)
+ \longrightarrow\OO^{\oplus3}
+ \longrightarrow\OO(1)^{\oplus2}
+ \longrightarrow0.
+\]
+Projectivising the quotient gives
+$\Pj(\OO(1)^{\oplus2})\simeq\Pj^1\times\Pj^1$.  Speyer wrote down the
+explicit maps in this sequence in the original public discussion
+\cite{SpeyerThread}.
+\end{remark}
+
+\section{The osculating slice}
+
+\begin{proposition}\label{prop:osculating}
+If $\cH_\ell$ is osculating to $\Gamma$, then
+\[
+ X_\ell\simeq\Gm\times\A^2.
+\]
+\end{proposition}
+
+\begin{proof}
+Choose coordinates
+\[
+ L=aX+bY,
+ \qquad
+ Q=cX^2+dXY+eY^2
+\]
+so that $\ell(LQ)=ac$.  The slice equations are
+\[
+ ac=1,
+ \qquad
+ a^2e-abd+cb^2=1.
+\]
+Thus $c=a^{-1}$ and
+\[
+ e=a^{-2}+a^{-1}bd-a^{-3}b^2.
+\]
+The variables $a\in\C^\times$ and $b,d\in\C$ are free, giving
+\[
+ \OO(X_\ell)\simeq\C[a,a^{-1},b,d].
+\]
+Hence $X_\ell\simeq\Gm\times\A^2$.  In particular it has nonconstant
+units and cannot be $\A^3$.
+\end{proof}
+
+Combining \cref{cor:transverse-not-affine,thm:tangent-A3,prop:osculating}
+proves \cref{thm:classification-intro}.
+
+\begin{corollary}[Essential uniqueness]\label{cor:essential-uniqueness}
+All successful linear--quadratic slices belong to a single natural orbit.
+More precisely, if $X_\ell\simeq\A^3$ and
+$X_{\ell'}\simeq\A^3$, then a change of variables in $W$ and a
+rescaling of the functional induce an isomorphism of the two
+multiplication diagrams
+\[
+ \begin{array}{ccc}
+ X_\ell&\longrightarrow&H_\ell\\
+ \downarrow&&\downarrow\\
+ X_{\ell'}&\longrightarrow&H_{\ell'}.
+ \end{array}
+\]
+Thus, within this factorisation family, the resulting morphism is unique
+up to the natural linear symmetries.  After identifying each source with
+$\A^3$, the corresponding Keller maps differ by a polynomial change of
+source coordinates and a linear change of target coordinates.
+\end{corollary}
+
+\begin{proof}
+A tangent nonosculating hyperplane cuts $\Gamma$ in a divisor $2p+q$
+with $p\ne q$.  The group $\operatorname{PGL}_2$ acts transitively on
+ordered pairs of distinct points, and rescaling $\ell$ does not change
+the slice up to the normalization described above.
+\end{proof}
+
+\section{The Keller map and its global fibres}
+
+For a tangent representative, choose coordinates so that the affine
+hyperplane is
+\[
+ H=\set{C=UX^3+X^2Y+VXY^2+WY^3} \simeq\A^3_{U,V,W}.
+\]
+By \cref{prop:marked-root}, the associated map
+$f:X\to H$ has as fibre the simple roots of $C$.  The fibre, image and
+nonproperness descriptions below also appear in the separately posted
+contemporaneous manuscript \cite{AnonymousCounterexample}; we include a
+self-contained derivation in the normalized-slice framework.
+
+\begin{proposition}\label{prop:fibres-image}
+The map $f$ is étale of generic degree three.  Its fibres have sizes
+$3,1,0$ according as the cubic has three simple roots, one simple root,
+or no simple root.  Its image is the complement of the triple-root curve
+\[
+ \boxed{3UV=1,\qquad27U^2W=1.}
+\]
+Over the discriminant complement, $f$ is finite étale of degree three,
+and its nonproperness set is exactly the discriminant hypersurface.
+\end{proposition}
+
+\begin{proof}
+Only the description of the triple-root curve requires calculation.  If
+\[
+ UX^3+X^2Y+VXY^2+WY^3=U(X-rY)^3,
+\]
+comparison of the $X^2Y$ coefficient gives $r=-1/(3U)$.  Comparing the
+remaining coefficients gives $3UV=1$ and $27U^2W=1$.  The fibre and image
+claims follow from \cref{prop:marked-root}.
+
+For properness, let
+\[
+ I=\set{(C,p)\in H\times\Pj^1:p\text{ is a root of }C}.
+\]
+The projection $I\to H$ is proper.  Every fibre is finite because the
+coefficient of $X^2Y$ is fixed and nonzero, so properness and
+quasi-finiteness make $I\to H$ finite.  The other projection
+$I\to\Pj^1$ is an $\A^2$-bundle: for each $p$, the root condition
+$C(p)=0$ is a nonzero affine-linear equation in $(U,V,W)$.  Thus $I$ is
+irreducible.  The simple-root locus in $I$ is precisely $X$, and its
+complement is the multiple-root incidence.  The image of that boundary
+is $V(\Delta)$, so $f$ is finite over $H\setminus V(\Delta)$.
+
+Conversely, take $y\in V(\Delta)$ and choose a boundary point
+$z\in(I\setminus X)_y$ marking a multiple root.  Since $I$ is
+irreducible and $X$ is dense, algebraic curve selection gives a morphism
+\[
+ \gamma:\Spec R\longrightarrow I
+\]
+from a discrete valuation ring whose generic point maps to $X$ and whose
+closed point maps to $z$.  One may obtain $R$ by taking the normalization
+of an integral curve through $z$ that is not contained in $I\setminus X$
+and localizing at a point over $z$.
+
+If the restriction $f:X\to H$ were proper over some Zariski
+neighbourhood of $y$, the valuative criterion would extend the induced
+generic-point map $\Spec\operatorname{Frac}(R)\to X$ to
+$\Spec R\to X$.  After composing with the open immersion $X\hookrightarrow
+I$, this extension and $\gamma$ would be two extensions over $H$ of the
+same generic-point map.  They must agree because the finite morphism
+$I\to H$ is separated, but their closed points would lie respectively in
+$X$ and at $z\notin X$, a contradiction.  Thus no neighbourhood of $y$
+supports a proper restriction.  Together with finiteness away from the
+discriminant, this proves that the nonproperness set is exactly
+$V(\Delta)$.
+\end{proof}
+
+The discriminant is
+\begin{equation}\label{eq:discriminant}
+ \Delta(U,V,W)=V^2-4UV^3-4W-27U^2W^2+18UVW.
+\end{equation}
+The source has no critical points.  At a general point of $V(\Delta)$,
+the two markings of the coalescing roots escape to the deleted resultant
+divisor, while the marking of the remaining simple root stays finite.
+Thus the map misses only a curve, although it fails to be proper along an
+entire hypersurface.
+
+Since $X\simeq\A^3$ by \cref{thm:tangent-A3}, choosing polynomial
+coordinates on $X$ and linear coordinates on $H$ produces a polynomial
+self-map of $\A^3$ with nonzero constant Jacobian and generic degree
+three.  The explicit coordinates in \cref{app:coordinates} identify it
+with the announced map and exhibit a three-point collision.  Exact
+rational verification of the map and collision is also available in the
+public NASQRET notebook \cite{NasqretVerification}.
+
+\section{Consequences and limits of the mechanism}
+
+\subsection{Why degree three is exceptional}
+
+For the linear--times--degree-$(d-1)$ family, the degree difference is
+$d-2$.  The local determinant, torsor degree and class-group determinant
+are therefore all controlled by the same integer:
+\[
+ \det D\Phi_{1,d-1}=\pm(d-2)\Res^2,
+ \qquad
+ \deg q=d-2,
+ \qquad
+ \Cl(U)\simeq\Z/(d-2)\Z
+\]
+when the boundary is prime.  The cubic case is the unique one for which
+this integer equals one.  The compactly supported Euler-characteristic
+argument in \cref{cor:euler-obstruction} rules out the normalized affine
+slice for every $d\ge4$, including reducible boundary cases.
+
+\subsection{Adjacent degrees and a next test case}
+
+The degree-difference obstruction disappears whenever $\abs{s-r}=1$.
+The first subsequent adjacent-degree case is $(r,s)=(2,3)$, where the
+normalized slice has dimension five and generic degree
+\[
+ \binom52=10.
+\]
+The present results do not decide whether a hyperplane slice can make
+that space $\A^5$.  They reduce the plausible search space sharply:
+nonadjacent degrees are excluded by the cyclic torsor, while adjacent
+degrees require finer invariants analogous to the transverse
+Hodge--Deligne obstruction used here.
+
+\subsection{A multifactor obstruction}
+
+Let $k\ge3$, let all $d_i$ be positive, put
+$Y=\prod_{i=1}^k\Pj(V_{d_i})$, and set $D=\sum_i d_i$.  A direct
+multifactor boundary complement removes every pairwise resultant divisor
+$\cR_{ij}$ together with the pullback
+\[
+ \cS_\ell=\set{\ell(A_1\cdots A_k)=0}
+\]
+of a nonzero hyperplane in $\Pj(V_D)$.  Each $\cR_{ij}$ is prime, and
+the pairwise divisors are distinct: its class has entries $d_j,d_i$ in
+the $i,j$ positions of $\Pic(Y)\simeq\Z^k$ and zero elsewhere.
+
+Moreover, no $\cR_{ij}$ is a component of $\cS_\ell$.  Otherwise
+$\ell(A_1\cdots A_k)$ would vanish whenever $A_i$ and $A_j$ share a
+linear factor.  Such products include every form $L^2P$ with
+$L\in V_1$ and $P\in V_{D-2}$: over $\C$, factor $P$ and distribute its
+linear factors among the remaining prescribed degrees.  These forms
+span $V_D$.  Indeed, taking $L=X$ gives all degree-$D$ monomials whose
+$Y$-exponent is at most $D-2$, and taking $L=Y$ gives those whose
+$Y$-exponent is at least $2$.  Thus $\ell$ would vanish identically, a
+contradiction.
+
+Consequently the boundary has at least $\binom{k}{2}+1>k$ distinct
+prime components, whereas $\Pic(Y)$ has rank $k$.  The divisor
+localisation sequence therefore has a nonzero kernel in its boundary
+class map, producing a nonconstant unit on the complement.  Hence this
+untrimmed multifactor boundary complement cannot be affine space.  This
+unit obstruction does not assert the existence of a simultaneous
+normalisation of all pairwise resultants.
+
+\section{Provenance and scope}
+
+The explicit Keller map was announced by Alpöge, who credited Fable for
+the construction \cite{AlpogeAnnouncement}.  In Speyer's public
+discussion, Will Sawin posted a ChatGPT-produced symmetric-product
+formulation prompted by Andy Jiang.  Sawin later developed an iterated
+$\A^1$-bundle explanation through further ChatGPT discussion, and Daniel
+Litt supplied a related bundle argument \cite{SpeyerThread}.  Tao's
+account gives the displayed parametrisation, inverse and induced map
+\cite{TaoDigestion}.  Levinson's account gives the projective conic
+construction used in \cref{sec:tangent}
+\cite{LevinsonGeometry}.  Speyer supplied the exact vector-bundle
+sequence in \cref{rem:hidden-bundle}; a commenter using the name Skooi
+recorded the $d-2$ divisor-class obstruction and a marked-simple-root
+description; and Shubhodip Mondal noted the corresponding
+$\Z/\abs{r-s}\Z$ pattern for arbitrary pairs of binary factors
+\cite{SpeyerThread}.  Tao's comment thread contains the explicit question
+whether the double-root orbit is uniquely characterized by polynomial
+triviality \cite{TaoDigestion}.  The fibre, image and nonproperness
+description in \cref{prop:fibres-image} also appears in the
+contemporaneous ulam.ai manuscript \cite{AnonymousCounterexample}; the
+argument here is the self-contained derivation presented in this
+manuscript.
+
+The candidate contributions claimed by this manuscript are the general
+degree-difference determinant and torsor package, the fibre-functional
+criterion of \cref{lem:S-bundle}, the motivic exclusion of the transverse
+orbit, the unit-theoretic identification of the osculating orbit, the
+complete orbit-by-orbit equivalence in \cref{thm:classification-intro},
+and the Euler-characteristic obstruction for the normalized higher-degree
+slices.  This description is not a priority or novelty determination; no
+exhaustive literature search has been performed.  All statements in the
+main text are over $\C$ unless explicitly qualified.
+
+The manuscript is attributed to OpenAI Codex / Anthropic models.
+Ian Pitchford is the repository maintainer and publisher and provided
+research direction and mediation.  These are repository-reported roles,
+not an externally audited authorship determination.  Exact model versions
+and a complete prompt history were not included in the source bundle.
+No external human review of the complete manuscript is documented.
+
+\subsection*{Licence and executable boundary}
+
+Except where otherwise indicated, to the extent Ian Pitchford holds
+copyright and related rights in the original repository contents, those
+rights are dedicated under CC0 1.0 Universal.  The dedication excludes
+cited or quoted third-party material, linked sources, software
+dependencies, trademarks and fonts embedded in the PDF.  Model and
+provider names are provenance labels only.
+
+The supplementary SymPy program performs the finite list of exact checks
+described in the appendix.  It does not encode the general geometric
+proofs.  A passing run is local executable evidence for the listed
+formulas, not independent reproduction, peer review or end-to-end
+formalisation.
+
+
+\appendix
+
+\section{Explicit affine coordinates}\label{app:coordinates}
+
+Take the tangent representative
+\[
+ X=\set{(a,b,c,d,e)\in\A^5:
+ a^2e-abd+cb^2=1,\ ad+bc=1}.
+\]
+The following formulas define a polynomial isomorphism
+$\Psi:\A^3_{a,y,z}\to X$:
+\begin{align*}
+ b&=1+ay,\\
+ c&=1-\frac32ay+a^2z,\\
+ d&=\frac12y-az+\frac32ay^2-a^2yz,\\
+ e&=-2z+4y^2-4ayz+3ay^3-2a^2y^2z.
+\end{align*}
+A polynomial inverse is
+\begin{align*}
+ y&=2bd-ae,\\
+ z&=2d^2+ce+6bd^2+3bce-\frac92e.
+\end{align*}
+These are the coordinates derived in Tao's account
+\cite{TaoDigestion}.  The identities
+\[
+ a(2bd-ae)=b-1,
+ \qquad
+ a^2(2d^2+ce)=2+c-3bc,
+\]
+combined with the two defining equations give a short proof that the
+maps are inverse without localizing at $a\ne0$.
+
+Multiplication gives the three nonconstant coefficients
+\[
+ G(a,y,z)=(ac,\ ae+bd,\ be).
+\]
+Expanded, they are
+\begin{align*}
+ G_1={}&a-\frac32a^2y+a^3z,\\
+ G_2={}&\frac12y-3az+6ay^2-6a^2yz
+ +\frac92a^2y^3-3a^3y^2z,\\
+ G_3={}&-2z+4y^2-6ayz+7ay^3
+ -6a^2y^2z+3a^2y^4-2a^3y^3z.
+\end{align*}
+By \cref{thm:determinant}, or direct differentiation,
+\[
+ \det DG=-1.
+\]
+
+Let
+\[
+ A_0(x,y,z)=\left(x,y,-\frac12z\right),
+ \qquad
+ B_0(u,v,w)=(w,2v,2u).
+\]
+Then $F=B_0\circ G\circ A_0$ is
+\begin{align*}
+ F_1&=(1+xy)^3z+y^2(1+xy)(4+3xy),\\
+ F_2&=y+3x(1+xy)^2z+3xy^2(4+3xy),\\
+ F_3&=2x-3x^2y-x^3z.
+\end{align*}
+It satisfies
+\[
+ \det DF=-2
+\]
+and
+\[
+ F(0,0,-1/4)
+ =F(1,-3/2,13/2)
+ =F(-1,3/2,13/2)
+ =(-1/4,0,0).
+\]
+The target cubic at this collision has roots
+$\infty,1/2,-1/2$ in the normalization used in the main text, so the
+three source points are exactly the three choices of marked simple root.
+
+If $(P,Q,R)$ denote the displayed output coordinates of $F$, then
+\[
+ U=\frac R2,\qquad V=\frac Q2,\qquad W=P.
+\]
+Consequently the nonproperness hypersurface in the original coordinates
+is $V(D)$, where
+\[
+ D(P,Q,R)=16P-Q^2-18PQR+Q^3R+27P^2R^2
+ =-4\Delta\left(\frac R2,\frac Q2,P\right),
+\]
+and the omitted triple-root curve is
+\[
+ 3QR=4,\qquad27PR^2=4.
+\]
+
+\section{Exact verification ledger}\label{app:verification}
+
+The supplementary script accompanying this paper performs the following
+checks over $\Q$ with symbolic assertions:
+\begin{enumerate}[label=(\roman*),leftmargin=2.1em]
+\item the four parametrisation formulas satisfy both defining equations
+of $X$ identically;
+\item the displayed inverse formulas recover $y$ and $z$ identically;
+\item the expanded components of $G$ equal $(ac,ae+bd,be)$ and
+$\det DG=-1$;
+\item $B_0\circ G\circ A_0$ equals the announced map coefficient by
+coefficient, $\det DF=-2$, and the three rational points have the stated
+common image;
+\item the discriminant of
+$UX^3+X^2Y+VXY^2+WY^3$ is
+\eqref{eq:discriminant};
+\item the triple-root equations and the collision-cubic factorisation
+hold exactly;
+\item for every positive pair with $r+s\le4$, the full resultant
+polynomial and the complete Jacobian determinant satisfy
+\cref{thm:determinant} symbolically; and
+\item for every $1\le r,s\le8$, the Jacobian determinant of
+$\Phi_{r,s}$ at the normalising base point equals
+$(-1)^{s(r+1)}(r-s)$, including the zero base-point cases $r=s$.
+\end{enumerate}
+No floating-point arithmetic or random testing is used.
+
+\begingroup
+\footnotesize
+\setlength{\parskip}{0pt}
+\begin{thebibliography}{99}
+
+\bibitem{AlpogeAnnouncement}
+L.~Alpöge,
+\emph{\href{https://x.com/__alpoge__/status/2079028340955197566}
+{Hello there the Jacobian conjecture is false}},
+public announcement on X, 20 July 2026.
+
+\bibitem{AnonymousCounterexample}
+Anonymous,
+\emph{\href{https://www.ulam.ai/research/jacobian.pdf}
+{A counterexample to the Jacobian conjecture}},
+manuscript dated 20 July 2026.
+
+\bibitem{LevinsonGeometry}
+J.~Levinson,
+\emph{\href{https://levjake.wordpress.com/2026/07/22/the-jacobian-conjecture-counterexample/}
+{The Jacobian conjecture counterexample, via classical projective geometry}},
+22 July 2026.
+
+\bibitem{NasqretVerification}
+NASQRET,
+\emph{\href{https://nasqret.github.io/jacobian-counterexample/book/notebooks/sympy-verification.html}
+{Exact SymPy verification --- A Three-Dimensional Keller Counterexample}},
+2026.
+
+\bibitem{SpeyerThread}
+D.~Speyer and contributors,
+\emph{\href{https://sbseminar.wordpress.com/2026/07/20/the-new-counterexample-to-the-jacobian-conjecture/}
+{The new counterexample to the Jacobian conjecture}},
+Secret Blogging Seminar, 20--24 July 2026.
+
+\bibitem{TaoDigestion}
+T.~Tao,
+\emph{\href{https://terrytao.wordpress.com/2026/07/21/a-digestion-of-the-jacobian-conjecture-counterexample/}
+{A digestion of the Jacobian conjecture counterexample}},
+21 July 2026, including comment thread.
+
+\end{thebibliography}
+\endgroup
+
+\end{document}
