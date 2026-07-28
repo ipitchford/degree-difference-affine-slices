@@ -4,6 +4,18 @@
 
 **Status: unrefereed candidate mathematical manuscript.**
 
+## Persistent archive
+
+- **Exact candidate version DOI:** [10.5281/zenodo.21647593](https://doi.org/10.5281/zenodo.21647593)
+- **Concept DOI for all versions:** [10.5281/zenodo.21647592](https://doi.org/10.5281/zenodo.21647592)
+- **Zenodo record:** [21647593](https://zenodo.org/records/21647593)
+- **Deposited file:** `degree-difference-affine-slices.zip`
+- **Deposited file SHA-256:** `8d0b0cfb3b43e3b7c7f32f62506ae66e824890e15a981b8498d41a07b4c2fe43`
+
+Zenodo published this immutable archive on
+`2026-07-28T14:04:37.345508+00:00`. The DOI metadata was added to the
+repository afterward and does not alter or become part of that deposited ZIP.
+
 This prerelease publishes a candidate account of the degree-difference
 determinant and affine slices of binary-form factorisation spaces, together
 with exact local symbolic checks and an AI-readable evidence index.

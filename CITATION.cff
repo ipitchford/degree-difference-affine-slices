@@ -16,6 +16,14 @@ abstract: >-
 version: 0.1-candidate
 date-released: 2026-07-27
 license: CC0-1.0
+doi: 10.5281/zenodo.21647593
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.21647592
+    description: Zenodo concept DOI for all versions
+  - type: doi
+    value: 10.5281/zenodo.21647593
+    description: Zenodo DOI for the exact 0.1-candidate archive
 repository-code: https://github.com/ipitchford/degree-difference-affine-slices
 url: https://github.com/ipitchford/degree-difference-affine-slices
 keywords:
@@ -33,3 +41,4 @@ preferred-citation:
   authors:
     - name: OpenAI Codex / Anthropic models
   year: 2026
+  doi: 10.5281/zenodo.21647593

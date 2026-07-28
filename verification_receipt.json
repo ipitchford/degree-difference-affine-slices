@@ -10,6 +10,20 @@
     "path_safety_passed": true,
     "supplied_receipt_hashes_matched": true
   },
+  "zenodo": {
+    "instance": "https://zenodo.org",
+    "record_id": 21647593,
+    "record_url": "https://zenodo.org/records/21647593",
+    "version_doi": "10.5281/zenodo.21647593",
+    "concept_doi": "10.5281/zenodo.21647592",
+    "published_at": "2026-07-28T14:04:37.345508+00:00",
+    "archive": {
+      "name": "degree-difference-affine-slices.zip",
+      "sha256": "8d0b0cfb3b43e3b7c7f32f62506ae66e824890e15a981b8498d41a07b4c2fe43"
+    },
+    "metadata_scope": "Post-deposition archival metadata; the immutable Zenodo ZIP does not include later repository-only DOI metadata commits.",
+    "new_verification_replay": false
+  },
   "platform": {
     "operating_system": "macOS 26.5.2",
     "build": "25F84",

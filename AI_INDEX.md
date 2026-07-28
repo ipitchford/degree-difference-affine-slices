@@ -5,6 +5,23 @@
 This file is the preferred entry point for automated readers. It maps claims
 to evidence and states what must not be inferred.
 
+## Persistent archival identity
+
+```yaml
+repository: https://github.com/ipitchford/degree-difference-affine-slices
+release_status: unrefereed candidate manuscript
+version: 0.1-candidate
+zenodo:
+  record_id: 21647593
+  record_url: https://zenodo.org/records/21647593
+  version_doi: 10.5281/zenodo.21647593
+  concept_doi: 10.5281/zenodo.21647592
+  published_at: "2026-07-28T14:04:37.345508+00:00"
+  archive_file: degree-difference-affine-slices.zip
+  archive_sha256: 8d0b0cfb3b43e3b7c7f32f62506ae66e824890e15a981b8498d41a07b4c2fe43
+  scope: exact deposited candidate archive; excludes later repository-only metadata commits
+```
+
 ## Global status
 
 - **Publication class:** unrefereed candidate manuscript.

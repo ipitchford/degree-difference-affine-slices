@@ -8,6 +8,24 @@ Generated 27 July 2026 at 21:29 UTC.
 is not independent external reproduction, external human review, peer review,
 or formalisation.
 
+## Post-deposition archival addendum
+
+Added after the original replay to record the subsequently published Zenodo
+archive. This is publication metadata, not a new verification replay, and it
+does not change the assurance class above.
+
+- **Published:** `2026-07-28T14:04:37.345508+00:00`
+- **Exact candidate version DOI:** [10.5281/zenodo.21647593](https://doi.org/10.5281/zenodo.21647593)
+- **Concept DOI for all versions:** [10.5281/zenodo.21647592](https://doi.org/10.5281/zenodo.21647592)
+- **Record:** [https://zenodo.org/records/21647593](https://zenodo.org/records/21647593)
+- **Deposited file:** `degree-difference-affine-slices.zip`
+- **Deposited file SHA-256:** `8d0b0cfb3b43e3b7c7f32f62506ae66e824890e15a981b8498d41a07b4c2fe43`
+
+This SHA-256 identifies the immutable Zenodo ZIP. It is intentionally distinct
+from the supplied source-archive hash recorded in
+`verification_receipt.json`. Later repository-only DOI metadata commits are
+not contained in the deposited ZIP.
+
 ## Environment
 
 - macOS 26.5.2 (build 25F84), arm64

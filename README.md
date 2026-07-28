@@ -2,6 +2,8 @@
 
 # Degree-difference principle and affine slices
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21647592.svg)](https://doi.org/10.5281/zenodo.21647592)
+
 > **Status: unrefereed candidate mathematical manuscript.**
 > This repository presents a candidate account of degree-difference identities
 > and affine-slice geometry for binary-form factorisation spaces. The bundled
@@ -16,6 +18,18 @@
 > manuscript, literature-based novelty determination, peer review, or
 > end-to-end formalisation has been documented. Issues, counterexamples, and
 > independent checks are invited.
+
+## Persistent archive
+
+- **Exact candidate version:** [10.5281/zenodo.21647593](https://doi.org/10.5281/zenodo.21647593)
+- **All versions:** [10.5281/zenodo.21647592](https://doi.org/10.5281/zenodo.21647592)
+- **Zenodo record:** [21647593](https://zenodo.org/records/21647593)
+- **Deposited file:** `degree-difference-affine-slices.zip`
+- **Deposited file SHA-256:** `8d0b0cfb3b43e3b7c7f32f62506ae66e824890e15a981b8498d41a07b4c2fe43`
+
+The version DOI identifies the exact deposited `0.1-candidate` archive. Later
+repository-only metadata commits, including the commit that adds these DOI
+links, are not part of that immutable ZIP.
 
 This repository contains a candidate manuscript about the
 multiplication-resultant map
