@@ -22,6 +22,22 @@ zenodo:
   scope: exact deposited candidate archive; excludes later repository-only metadata commits
 ```
 
+## ClaimPack discovery
+
+```yaml
+format: ClaimPack v0.1 candidate
+package: claimpacks/degree-difference-affine-slices
+manifest: claimpacks/degree-difference-affine-slices/claimpack.json
+consumer_release: https://github.com/ipitchford/claimpack/releases/tag/v0.1.0-candidate.1
+distribution_status: post-release repository metadata
+```
+
+The package is a machine-readable representation for discovery and cautious
+reuse. Successful structural validation does not verify any mathematical
+claim, prove correspondence with every source passage, establish novelty, or
+alter the statuses below. It was not included in the historical
+`v0.1-candidate` tag or DOI archive.
+
 ## Global status
 
 - **Publication class:** unrefereed candidate manuscript.

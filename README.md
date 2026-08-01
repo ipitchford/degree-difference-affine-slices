@@ -19,6 +19,11 @@
 > end-to-end formalisation has been documented. Issues, counterexamples, and
 > independent checks are invited.
 
+Machine-readable discovery metadata is available through
+[`CLAIMPACK.md`](CLAIMPACK.md) and the embedded
+[`claimpack.json`](claimpacks/degree-difference-affine-slices/claimpack.json).
+It is post-release metadata and does not constitute verification.
+
 ## Persistent archive
 
 - **Exact candidate version:** [10.5281/zenodo.21647593](https://doi.org/10.5281/zenodo.21647593)
